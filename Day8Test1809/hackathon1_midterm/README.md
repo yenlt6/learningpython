@@ -42,3 +42,11 @@ Cho một chữ số la mã dạng string, hãy viết hàm roman_to_int() chuy�
 
 # Hard [1] Baby Name
 Xem yêu cầu trong file babynames.py
+
+Đăc trưng của python:
+- slising của list, tiple
+- unpack ra nhiều biến khác nhau
+- Data structure: 
+- regulerexpresion có chữ r ở trươc r=raw ?
+- f string
+- lập trình hàm
