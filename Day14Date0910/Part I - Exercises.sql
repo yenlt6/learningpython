@@ -41,7 +41,7 @@ WHERE
 # Viết câu lệnh truy vấn lấy ra tất cả order trong bảng orders:
 # Chỉ lấy các order có order_date trước 2018
 # Tập kết quả gồm các cột order_id, customer_id và status
-SELECT * FROM `orders` WHERE order_date<'2018-00-00'
+SELECT * FROM `orders` WHERE order_date<'2018-01-01'
 
 
 # 5.
@@ -49,43 +49,85 @@ SELECT * FROM `orders` WHERE order_date<'2018-00-00'
 # Có order date trong năm 2018 và status = 2
 
 SELECT * FROM orders WHERE YEAR(order_date) = 2018 and status = 2
+SELECT * FROM orders WHERE order_date BETWEEN ('2018-01-01') and ('2019-01-01') and status = 2
 
 # 6.
 # Viết câu lệnh truy vấn lấy ra tất cả customer trong bảng customers:
 # Có state = MA hoặc CA và points > 2000
 
+SELECT
+    *
+FROM
+    `customers`
+WHERE
+    state = 'MA' OR state = 'CA' AND points > 2000
+
+
+SELECT
+    *
+FROM
+    `customers`
+WHERE
+    state in ('MA','CA') AND points > 2000
+
+
+SELECT
+    *
+FROM
+    `customers`
+WHERE
+    state REGEXP "^MA$|^CA$" AND points > 2000
+
 # 7.
 # Viết câu lệnh truy vấn lấy ra tất cả customer trong bảng customers:
 # Có birth_date từ 1980 - 1990
+
+select * from customers WHERE year(birth_date) BETWEEN 1980 and 1990
 
 # 8.
 # Viết câu lệnh truy vấn lấy ra tất cả customer trong bảng customers:
 # Có state không phải TX, TN, VA hoặc CA
 
+select * from customers WHERE not state in ('TX','TN','VA','CA')
+select * from customers WHERE state not in ('TX','TN','VA','CA')
+
 # 9.
 # Viết câu lệnh truy vấn lấy ra tất cả customer trong bảng customers:
 # Có address chứa từ TRAIL hoặc AVENUE
+
+SELECT * FROM `customers` WHERE address LIKE '%TRAIL%' or address LIKE '%AVENUE%'
+SELECT * FROM `customers` WHERE address REGEXP "TRAIL|AVENUE"
+
 
 # 10. 
 # Viết câu lệnh truy vấn lấy ra tất cả customer trong bảng customers:
 # Có phone bắt đầu hoặc kết thúc với số 9
 
+SELECT * FROM `customers` WHERE phone like '9%' or phone like '%9'
+    
 # 11.
 # Viết câu lệnh truy vấn lấy ra tất cả customer trong bảng customers:
 # Có first_name và last_name đều bắt đầu bằng ký tự R
+SELECT * FROM `customers` WHERE first_name LIKE "R%" and last_name LIKE "R%"
 
 # 12.
 # Viết câu lệnh truy vấn lấy ra tất cả customer trong bảng customers:
 # first_name có độ dài 4 ký tự
-
+SELECT * FROM `customers` WHERE first_name like '____'
+SELECT * FROM `customers` WHERE length(first_name)=4
 # 13.
 # Viết câu lệnh truy vấn lấy ra tất cả customer trong bảng customers:
 # first_name có chứa ký tự B, nhưng không bắt đầu bằng B
+SELECT * from customers WHERE first_name like "%B%" and first_name not like "B%"
+SELECT * from customers WHERE first_name like "%B%" and not first_name like "B%"
 
 # 14.
 # Viết câu lệnh truy vấn lấy ra tất cả customer
 # Có birth_date từ 1980 - 1990
 # Sắp xếp theo độ tuổi (năm sinh) tăng dần
+
+select * FROM customers WHERE year(birth_date) BETWEEN 1980 and 1990 order by birth_date asc
+
 
 # 15.
 # Viết câu lệnh truy vấn lấy ra tất cả product trong bảng products:
