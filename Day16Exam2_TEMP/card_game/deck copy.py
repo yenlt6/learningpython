@@ -1,7 +1,9 @@
-from Day16Exam2Date1510.card_game.card import Card
+from card import Card
 import random
 
-class Deck(Card):
+class Deck:
+    def __init__(self):
+        self.list_card=self.build()
     '''
     Class đại diện cho bộ bài, bao gồm 36 lá
     '''
@@ -14,13 +16,13 @@ class Deck(Card):
         list_suit = ['G', 'H', 'J', 'K']         
         for rank in list_rank:
             for suit in list_suit:
-              list_card.append( Card(rank, suit) )
+              list_card.append(Card(rank, suit))
         return  list_card
       
 
     def shuffle_card(self):
         '''Trộn bài, random(list)'''
-        return random.choice(self)
+        return random.shuffle(self.list_card)
 
     # def shuffle_card(self,list_card):
     #     '''Trộn bài, random(list)'''
@@ -31,4 +33,8 @@ class Deck(Card):
         return self.remove(card_item)
         '''Rút một lá bài từ bộ bài: lấy random 1 lá bài từ bộ bài, tức là lấy random 1 phần tử trong list ra'''
 
-
+deck=Deck()
+print(deck)
+list_card_t=deck.shuffle_card
+for i in list_card_t:
+    print(i)

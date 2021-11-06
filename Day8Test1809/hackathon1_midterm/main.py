@@ -6,6 +6,7 @@ class CheckEasySolutions(unittest.TestCase):
     def test_easy_day_diff(self):
         self.assertEqual(easy.day_diff("19/12/2021","2021-17-05"), 216)
         self.assertEqual(easy.day_diff("10/05/2021","2021-01-03"), 70)
+        self.assertNotIsInstance
 
     def test_easy_alpha_num(self):
         self.assertEqual(easy.alpha_num("Emma25 is Data scientist50 and AI Expert"), ["Emma25", "scientist50"])
